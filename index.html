@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Pre-foreclosure, sheriff sale, and tax-lien leads for NJ agents and investors. One agent per territory. Book a 20-minute Territory Check Call.">
+<title>NJ Distress — Pre-foreclosure & Sheriff Sale Leads for NJ Agents & Investors</title>
+
+<!-- =====================================================================
+     LANDING PAGE — NJ DISTRESS
+     Designed to match tier_comparison_v2.html exactly.
+     Drop into Vercel, Netlify, GitHub Pages, or any static host.
+
+     THINGS TO SWAP BEFORE GOING LIVE:
+     1. All instances of "CALENDLY_LINK_HERE" → your actual Calendly/Cal.com URL
+        Best format: https://calendly.com/your-handle/territory-check
+     2. The Calendly inline embed block at #book section (instructions inline)
+     3. INSTAGRAM_HANDLE → your real IG handle (appears in footer + hero)
+     4. Optional: Open Graph image for link previews (see <meta> below)
+     ===================================================================== -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0B111F;
+    --bg-raised: #131B2D;
+    --bg-card: #1A2337;
+    --ink: #F3EEDF;
+    --ink-muted: #94A0B8;
+    --ink-faint: #5A6880;
+    --gold: #D4B668;
+    --gold-deep: #B8974A;
+    --gold-soft: #E8D5A0;
+    --rule: #2A3449;
+
+    --container: 1100px;
+    --pad-x: clamp(20px, 5vw, 64px);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Global atmosphere — radial gold glows + noise overlay, same as poster */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse at 15% 8%, rgba(212, 182, 104, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 85% 92%, rgba(212, 182, 104, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    pointer-events: none;
+    z-index: 2;
+    mix-blend-mode: overlay;
+    opacity: 0.5;
+  }
+
+  .container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--pad-x);
+    position: relative;
+    z-index: 3;
+  }
+
+  /* === NAV === */
+  .nav {
+    position: sticky;
+    top: 0;
+    background: rgba(11, 17, 31, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--rule);
+    z-index: 100;
+  }
+
+  .nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px var(--pad-x);
+    max-width: var(--container);
+    margin: 0 auto;
+    gap: 16px;
+  }
+
+  .brand {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    text-decoration: none;
+  }
+
+  .brand em {
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .nav-cta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--bg);
+    background: var(--gold);
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+
+  .nav-cta:hover { background: var(--gold-soft); }
+
+  /* === BUTTONS (reusable) === */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    color: var(--bg);
+    background: var(--gold);
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 16px 26px;
+    border-radius: 2px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    white-space: nowrap;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-soft);
+    transform: translateY(-1px);
+  }
+
+  .btn-primary::after {
+    content: '→';
+    font-size: 16px;
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    background: transparent;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 14px 22px;
+    border: 1px solid var(--gold-deep);
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .btn-ghost:hover {
+    background: rgba(212, 182, 104, 0.08);
+    color: var(--gold-soft);
+  }
+
+  .btn-ghost::after {
+    content: '→';
+    font-size: 15px;
+  }
+
+  /* === EYEBROW (shared) === */
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  /* === SECTION RHYTHM === */
+  section {
+    padding: clamp(60px, 9vw, 110px) 0;
+    position: relative;
+  }
+
+  section + section { border-top: 1px solid var(--rule); }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--gold-deep);
+  }
+
+  h2.section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(30px, 4.5vw, 46px);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    font-variation-settings: 'opsz' 144;
+  }
+
+  h2.section-title em {
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .section-intro {
+    font-size: 17px;
+    color: var(--ink-muted);
+    max-width: 640px;
+    line-height: 1.55;
+    margin-bottom: 48px;
+  }
+
+  /* =========================================================
+     HERO
+     ========================================================= */
+  .hero {
+    padding: clamp(60px, 11vw, 130px) 0 clamp(50px, 8vw, 90px);
+    position: relative;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  @media (min-width: 900px) {
+    .hero-inner { grid-template-columns: 1.4fr 1fr; gap: 70px; }
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  h1.hero-headline {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(38px, 6.4vw, 72px);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    margin-bottom: 28px;
+    font-variation-settings: 'opsz' 144;
+  }
+
+  h1.hero-headline em {
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .hero-sub {
+    font-size: clamp(16px, 1.9vw, 19px);
+    color: var(--ink-muted);
+    line-height: 1.5;
+    margin-bottom: 40px;
+    max-width: 540px;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 44px;
+  }
+
+  .hero-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+  }
+
+  .hero-meta a {
+    color: var(--gold-deep);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--gold-deep);
+    padding-bottom: 1px;
+  }
+
+  .hero-meta a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+  /* Hero proof panel */
+  .proof-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--gold);
+    border-radius: 2px;
+    padding: 26px 28px;
+    position: relative;
+  }
+
+  .proof-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+  }
+
+  .proof-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .proof-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 18px;
+    margin-bottom: 18px;
+  }
+
+  .stat .num {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--gold);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    display: block;
+    margin-bottom: 6px;
+    font-variation-settings: 'opsz' 144;
+  }
+
+  .stat .lbl {
+    font-size: 12px;
+    color: var(--ink-muted);
+    line-height: 1.35;
+  }
+
+  .proof-foot {
+    padding-top: 16px;
+    border-top: 1px dashed var(--rule);
+    font-size: 12px;
+    color: var(--ink-faint);
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* =========================================================
+     PERSONA PATHS (three doors — keyword parity with IG DMs)
+     ========================================================= */
+  .personas {
+    background: var(--bg-raised);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .persona-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 10px;
+  }
+
+  @media (min-width: 800px) {
+    .persona-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  }
+
+  .persona {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 30px 26px 28px;
+    position: relative;
+    transition: border-color 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .persona:hover {
+    border-color: var(--gold-deep);
+    transform: translateY(-2px);
+  }
+
+  .persona-key {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--rule);
+  }
+
+  .persona-key::before {
+    content: '◆ ';
+    color: var(--gold-deep);
+    margin-right: 4px;
+  }
+
+  .persona h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+    line-height: 1.1;
+  }
+
+  .persona p {
+    font-size: 14.5px;
+    color: var(--ink-muted);
+    line-height: 1.55;
+    margin-bottom: 22px;
+    flex: 1;
+  }
+
+  .persona-link {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--rule);
+    align-self: flex-start;
+  }
+
+  .persona-link::after { content: '→'; font-size: 14px; }
+  .persona-link:hover { color: var(--gold-soft); }
+
+  /* =========================================================
+     SAMPLE LEAD (credibility anchor)
+     ========================================================= */
+  .sample-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  @media (min-width: 900px) {
+    .sample-inner { grid-template-columns: 1fr 1.1fr; gap: 60px; }
+  }
+
+  .sample-prose ul {
+    list-style: none;
+    margin-top: 24px;
+  }
+
+  .sample-prose li {
+    font-size: 15px;
+    color: var(--ink-muted);
+    line-height: 1.55;
+    padding: 10px 0 10px 22px;
+    border-bottom: 1px dashed var(--rule);
+    position: relative;
+  }
+
+  .sample-prose li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 18px;
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+
+  .sample-prose li:last-child { border-bottom: none; }
+
+  .sample-prose li strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* Lead card mock */
+  .lead-card {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 50px -25px rgba(0, 0, 0, 0.6);
+  }
+
+  .lead-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+  }
+
+  .lead-head {
+    background: var(--bg-raised);
+    padding: 16px 22px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .lead-id {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--ink-faint);
+  }
+
+  .score-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    background: rgba(212, 182, 104, 0.12);
+    color: var(--gold);
+    border: 1px solid var(--gold-deep);
+  }
+
+  .lead-body { padding: 8px 0; }
+
+  .row {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    padding: 14px 22px;
+    border-bottom: 1px dashed var(--rule);
+    align-items: center;
+    gap: 14px;
+  }
+
+  @media (max-width: 480px) {
+    .row { grid-template-columns: 1fr; gap: 4px; padding: 12px 18px; }
+  }
+
+  .row:last-child { border-bottom: none; }
+
+  .row .key {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+  }
+
+  .row .val {
+    font-size: 14.5px;
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  .row .val.accent { color: var(--gold); font-weight: 500; }
+  .row .val.muted { color: var(--ink-muted); font-style: italic; }
+  .row .val.flag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--gold-soft);
+    text-transform: uppercase;
+  }
+
+  .lead-foot {
+    padding: 14px 22px;
+    background: var(--bg-raised);
+    border-top: 1px solid var(--rule);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  /* =========================================================
+     PROCESS (4 steps)
+     ========================================================= */
+  .steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 10px;
+    counter-reset: step;
+  }
+
+  @media (min-width: 700px) { .steps { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) { .steps { grid-template-columns: repeat(4, 1fr); gap: 14px; } }
+
+  .step {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 26px 22px 24px;
+    counter-increment: step;
+    position: relative;
+  }
+
+  .step-num {
+    font-family: 'Fraunces', serif;
+    font-size: 34px;
+    font-weight: 400;
+    color: var(--gold-deep);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 18px;
+    font-variation-settings: 'opsz' 144;
+  }
+
+  .step-num::before { content: "0" counter(step); }
+
+  .step h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+    line-height: 1.15;
+  }
+
+  .step p {
+    font-size: 13.5px;
+    color: var(--ink-muted);
+    line-height: 1.55;
+  }
+
+  /* =========================================================
+     TIER SNAPSHOT (4 tiers mini)
+     ========================================================= */
+  .tiers-snapshot {
+    background: var(--bg-raised);
+  }
+
+  .tier-mini-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 10px;
+  }
+
+  @media (min-width: 700px) { .tier-mini-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) { .tier-mini-grid { grid-template-columns: repeat(4, 1fr); } }
+
+  .tier-mini {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 22px 20px 20px;
+    position: relative;
+  }
+
+  .tier-mini.featured {
+    border-color: var(--gold-deep);
+    background: linear-gradient(180deg, #1F2A44 0%, #1A2337 100%);
+  }
+
+  .tier-mini.featured::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+  }
+
+  .tier-mini-badge {
+    position: absolute;
+    top: -9px;
+    left: 16px;
+    background: var(--gold);
+    color: var(--bg);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    font-weight: 600;
+    padding: 4px 9px;
+    text-transform: uppercase;
+    border-radius: 1px;
+  }
+
+  .tier-mini-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .tier-mini h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+  }
+
+  .tier-mini.featured h4 { color: var(--gold-soft); }
+
+  .tier-mini .tag {
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin-bottom: 18px;
+    line-height: 1.4;
+    min-height: 34px;
+  }
+
+  .tier-mini .price {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 30px;
+    color: var(--ink);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+
+  .tier-mini.featured .price { color: var(--gold); }
+
+  .tier-mini .mo {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+  }
+
+  .tier-foot {
+    margin-top: 36px;
+    text-align: center;
+  }
+
+  .tier-foot .setup-note {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    padding-bottom: 20px;
+  }
+
+  .tier-foot .setup-note strong {
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* =========================================================
+     GUARANTEE
+     ========================================================= */
+  .guarantee-wrap {
+    max-width: 820px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .guarantee-card {
+    background: var(--bg-card);
+    border: 1px solid var(--gold-deep);
+    border-radius: 2px;
+    padding: clamp(34px, 5vw, 52px) clamp(28px, 5vw, 56px);
+    position: relative;
+    text-align: left;
+    box-shadow: 0 20px 50px -25px rgba(212, 182, 104, 0.2);
+  }
+
+  .guarantee-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .guarantee-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .guarantee-label::before { content: '◆ '; }
+
+  .guarantee-headline {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(24px, 3.6vw, 36px);
+    font-weight: 400;
+    line-height: 1.18;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+
+  .guarantee-headline em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .guarantee-body {
+    font-size: 15.5px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+    padding-top: 20px;
+    border-top: 1px dashed var(--rule);
+  }
+
+  /* =========================================================
+     BOOK — Calendly embed
+     ========================================================= */
+  .book {
+    background: var(--bg-raised);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .book-inner { text-align: center; max-width: 720px; margin: 0 auto; }
+
+  .book-list {
+    margin: 28px auto 44px;
+    text-align: left;
+    max-width: 540px;
+    list-style: none;
+  }
+
+  .book-list li {
+    font-size: 14.5px;
+    color: var(--ink-muted);
+    line-height: 1.55;
+    padding: 12px 0 12px 28px;
+    border-bottom: 1px dashed var(--rule);
+    position: relative;
+  }
+
+  .book-list li:last-child { border-bottom: none; }
+
+  .book-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    color: var(--gold);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .book-list li strong { color: var(--ink); font-weight: 500; }
+
+  /* Calendly embed placeholder */
+  .calendly-wrap {
+    margin-top: 48px;
+    padding: 28px;
+    background: var(--bg-card);
+    border: 1px dashed var(--gold-deep);
+    border-radius: 2px;
+    color: var(--ink-muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    line-height: 1.7;
+    text-align: left;
+  }
+
+  .calendly-wrap strong { color: var(--gold); font-weight: 600; }
+  .calendly-wrap code {
+    background: var(--bg);
+    padding: 2px 6px;
+    border-radius: 2px;
+    color: var(--gold-soft);
+    font-size: 11px;
+  }
+
+  /* =========================================================
+     FAQ
+     ========================================================= */
+  .faq-list { margin-top: 10px; }
+
+  details.faq {
+    border-bottom: 1px solid var(--rule);
+    padding: 0;
+  }
+
+  details.faq[open] summary::after { transform: rotate(45deg); color: var(--gold); }
+
+  details.faq summary {
+    padding: 24px 40px 24px 0;
+    font-family: 'Fraunces', serif;
+    font-size: clamp(17px, 2vw, 20px);
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+    transition: color 0.2s;
+  }
+
+  details.faq summary:hover { color: var(--gold-soft); }
+
+  details.faq summary::-webkit-details-marker { display: none; }
+
+  details.faq summary::after {
+    content: '+';
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold-deep);
+    font-size: 24px;
+    font-weight: 300;
+    transition: transform 0.2s, color 0.2s;
+    font-family: 'IBM Plex Sans', sans-serif;
+  }
+
+  details.faq[open] summary::after {
+    transform: translateY(-50%) rotate(45deg);
+    color: var(--gold);
+  }
+
+  details.faq .answer {
+    padding: 0 0 26px;
+    font-size: 15px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    max-width: 820px;
+  }
+
+  /* =========================================================
+     FINAL CTA STRIP
+     ========================================================= */
+  .final-cta {
+    text-align: center;
+    padding: clamp(70px, 10vw, 120px) 0;
+  }
+
+  .final-cta .kicker {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: clamp(18px, 2.4vw, 24px);
+    color: var(--ink-muted);
+    font-weight: 400;
+    margin-bottom: 18px;
+    font-variation-settings: 'opsz' 144;
+  }
+
+  .final-cta .statement {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(30px, 5vw, 52px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-bottom: 40px;
+    max-width: 820px;
+    margin-left: auto;
+    margin-right: auto;
+    font-variation-settings: 'opsz' 144;
+  }
+
+  .final-cta .statement em { color: var(--gold); font-style: italic; }
+
+  .final-cta .sub {
+    font-size: 14px;
+    color: var(--ink-faint);
+    margin-top: 26px;
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* =========================================================
+     FOOTER
+     ========================================================= */
+  footer {
+    padding: 36px 0 48px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  @media (min-width: 700px) {
+    .footer-inner { flex-direction: row; justify-content: space-between; align-items: center; gap: 28px; flex-wrap: wrap; }
+  }
+
+  .footer-brand {
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .footer-brand em { color: var(--gold); font-style: italic; font-weight: 400; }
+
+  .footer-counties {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  /* =========================================================
+     MOBILE REFINEMENTS
+     ========================================================= */
+  @media (max-width: 600px) {
+    .nav-cta { padding: 9px 14px; font-size: 10px; letter-spacing: 0.1em; }
+    .brand { font-size: 15px; }
+    .hero-actions { flex-direction: column; align-items: stretch; }
+    .hero-actions .btn-primary, .hero-actions .btn-ghost { justify-content: center; }
+    .proof-stats { grid-template-columns: 1fr 1fr; }
+    .section-label::before { width: 24px; }
+  }
+
+  /* =========================================================
+     ENTRANCE ANIMATION — staggered fade-in for hero
+     ========================================================= */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow, h1.hero-headline, .hero-sub, .hero-actions, .hero-meta, .proof-panel {
+    animation: rise 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+  }
+
+  .hero-eyebrow { animation-delay: 0.05s; }
+  h1.hero-headline { animation-delay: 0.15s; }
+  .hero-sub { animation-delay: 0.3s; }
+  .hero-actions { animation-delay: 0.45s; }
+  .hero-meta { animation-delay: 0.55s; }
+  .proof-panel { animation-delay: 0.35s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+
+</style>
+</head>
+
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="brand">NJ <em>Distress</em></a>
+    <a href="#book" class="nav-cta">Book the Call</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-inner">
+
+      <div>
+        <div class="hero-eyebrow">
+          <span class="eyebrow">For NJ Agents, Investors &amp; Brokers</span>
+        </div>
+
+        <h1 class="hero-headline">
+          Pre-foreclosure, sheriff sale &amp; tax-lien leads.<br>
+          <em>One agent per territory.</em>
+        </h1>
+
+        <p class="hero-sub">
+          Every Monday, we deliver skip-traced distress leads pulled from NJ county court records — curated, scored, and locked to you. No Zillow crowd. No competition inside our system. Just the first call to motivated sellers before anyone else has their number.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#book" class="btn-primary">Book the 20-min Call</a>
+          <a href="#how" class="btn-ghost">See How It Works</a>
+        </div>
+
+        <div class="hero-meta">
+          Or follow along on Instagram &nbsp;·&nbsp; <a href="https://instagram.com/INSTAGRAM_HANDLE" target="_blank" rel="noopener">@INSTAGRAM_HANDLE</a>
+        </div>
+      </div>
+
+      <!-- Hero proof panel -->
+      <aside class="proof-panel">
+        <div class="proof-title">Currently Tracking · 5 Counties</div>
+        <div class="proof-stats">
+          <div class="stat">
+            <span class="num">750</span>
+            <span class="lbl">Active distress signals</span>
+          </div>
+          <div class="stat">
+            <span class="num">211</span>
+            <span class="lbl">Pre-foreclosure filings (Lis Pendens)</span>
+          </div>
+          <div class="stat">
+            <span class="num">435</span>
+            <span class="lbl">Sheriff sale dates on the calendar</span>
+          </div>
+          <div class="stat">
+            <span class="num">86+</span>
+            <span class="lbl">Tax lien records</span>
+          </div>
+        </div>
+        <div class="proof-foot">
+          Burlington · Camden · Gloucester · Cumberland · Salem. New signals added weekly from direct court portal pulls.
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</header>
+
+<!-- ============ PERSONAS (three doors) ============ -->
+<section class="personas" id="who-for">
+  <div class="container">
+    <div class="section-label"><span class="eyebrow">Three doors. One call.</span></div>
+    <h2 class="section-title">Which one are <em>you</em>?</h2>
+    <p class="section-intro">
+      The same distress data is useful to three very different operators — each with a different outreach script, deliverable, and tier fit. Tell us which door on the call.
+    </p>
+
+    <div class="persona-grid">
+
+      <div class="persona">
+        <div class="persona-key">Agents · Keyword: LEADS</div>
+        <h3>Listing pipeline you can&rsquo;t buy anywhere else</h3>
+        <p>Pre-foreclosure owners who still own the home, still have equity, and haven&rsquo;t talked to an agent yet. You get weekly Hot/Warm/Cool triaged batches with filing dates, owner contact info, and signal-specific call scripts.</p>
+        <a href="#book" class="persona-link">Book &mdash; agent route</a>
+      </div>
+
+      <div class="persona">
+        <div class="persona-key">Investors · Keyword: DEALS</div>
+        <h3>Below-market acquisition at the signal level</h3>
+        <p>Sheriff sale, Lis Pendens, and tax lien records cross-referenced with absentee-owner flags and out-of-state residents. The deeper in distress, the larger the negotiating room. We surface it before the wholesaler does.</p>
+        <a href="#book" class="persona-link">Book &mdash; investor route</a>
+      </div>
+
+      <div class="persona">
+        <div class="persona-key">Brokers · Keyword: TEAM</div>
+        <h3>A specialist pipeline for your agents</h3>
+        <p>Give your team a defensible edge over competitors working generic MLS and Zillow funnels. County-wide exclusivity available for brokerages running serious volume. One agent from your team per zip.</p>
+        <a href="#book" class="persona-link">Book &mdash; broker route</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ SAMPLE LEAD ============ -->
+<section class="sample" id="sample">
+  <div class="container">
+    <div class="section-label"><span class="eyebrow">What a delivered lead looks like</span></div>
+
+    <div class="sample-inner">
+
+      <div class="sample-prose">
+        <h2 class="section-title">Not a list. <em>A finished deliverable.</em></h2>
+        <p class="section-intro">
+          Every lead arrives with the work already done. You open Monday morning, pick up the phone, and call someone who just got a filing against their home — with context, score, and a script already attached.
+        </p>
+        <ul>
+          <li><strong>Signal type &amp; filing date.</strong> So you know exactly how much time the owner has before the sale.</li>
+          <li><strong>Zillow + MLS status.</strong> Off-market flag means nobody else has called yet.</li>
+          <li><strong>Absentee &amp; out-of-state indicators.</strong> The single highest-converting sub-segment.</li>
+          <li><strong>Skip-traced phone + email.</strong> Pulled via IDI Core and BatchData — same databases licensed PIs use.</li>
+          <li><strong>Hot/Warm/Cool score.</strong> Call the Hot ones first. Skip the Cool ones. Stop guessing.</li>
+          <li><strong>Signal-specific call script.</strong> Different opening for Lis Pendens vs. Sheriff Sale vs. Tax Lien.</li>
+        </ul>
+      </div>
+
+      <div class="lead-card" role="img" aria-label="Anonymized sample lead record">
+        <div class="lead-head">
+          <div class="lead-id">LEAD &middot; #BUR-0421</div>
+          <div class="score-tag">◆ Hot</div>
+        </div>
+        <div class="lead-body">
+          <div class="row"><div class="key">Signal</div><div class="val accent">Lis Pendens</div></div>
+          <div class="row"><div class="key">Filed</div><div class="val">47 days ago &middot; Burlington County</div></div>
+          <div class="row"><div class="key">Owner</div><div class="val muted">&mdash; redacted &mdash;</div></div>
+          <div class="row"><div class="key">Location</div><div class="val flag">Out of State &middot; Slovenia</div></div>
+          <div class="row"><div class="key">Lender</div><div class="val">Nationstar Mortgage LLC</div></div>
+          <div class="row"><div class="key">Assessed</div><div class="val">$318,400</div></div>
+          <div class="row"><div class="key">Last sale</div><div class="val">$212,000 &middot; 2016</div></div>
+          <div class="row"><div class="key">Zillow</div><div class="val flag">Off Market</div></div>
+          <div class="row"><div class="key">Phone</div><div class="val accent">Verified &middot; mobile</div></div>
+          <div class="row"><div class="key">Script</div><div class="val">Lis Pendens &middot; empathy opener</div></div>
+        </div>
+        <div class="lead-foot">Anonymized for display &middot; real delivery is unredacted</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="how" id="how">
+  <div class="container">
+    <div class="section-label"><span class="eyebrow">How the pipeline works</span></div>
+    <h2 class="section-title">Four steps every week. <em>We do them. You call.</em></h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num"></div>
+        <h4>Pull from court records</h4>
+        <p>Direct scrapes of NJ county court portals the day filings are recorded. Lis Pendens, Sheriff Sales, Tax Liens &mdash; every signal, every county.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-num"></div>
+        <h4>Cross-reference property data</h4>
+        <p>Assessed value, last sale price, Zillow status, and absentee-owner flags merged into a single record. We surface equity and vacancy signals automatically.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-num"></div>
+        <h4>Skip-trace the owner</h4>
+        <p>IDI Core and BatchData pulls for verified phone and email. Dead numbers flagged and retried. No stale data in final delivery.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-num"></div>
+        <h4>Curate &amp; deliver</h4>
+        <p>Every Monday by 9am. Hot/Warm/Cool score, filing context, call scripts, and your exclusive territory lock &mdash; no other agent in our system sees the same list.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIER SNAPSHOT ============ -->
+<section class="tiers-snapshot" id="pricing">
+  <div class="container">
+    <div class="section-label"><span class="eyebrow">Pricing &middot; four tiers</span></div>
+    <h2 class="section-title">How much of your market do you want to <em>own</em>?</h2>
+    <p class="section-intro">
+      Every tier carries the same First-Listing Guarantee and month-to-month terms. The difference is exclusivity size &mdash; how much of your county is off-limits to every other agent in our system.
+    </p>
+
+    <div class="tier-mini-grid">
+
+      <div class="tier-mini">
+        <div class="tier-mini-label">Founding &middot; 5 seats</div>
+        <h4>Founding Partner</h4>
+        <div class="tag">Intro cohort &middot; lifetime rate locked</div>
+        <div class="price">$1,497</div>
+        <div class="mo">Per Month</div>
+      </div>
+
+      <div class="tier-mini">
+        <div class="tier-mini-label">Starter</div>
+        <h4>Zip</h4>
+        <div class="tag">3-zip lock &middot; focused farming</div>
+        <div class="price">$1,997</div>
+        <div class="mo">Per Month</div>
+      </div>
+
+      <div class="tier-mini featured">
+        <div class="tier-mini-badge">Anchor tier</div>
+        <div class="tier-mini-label">Most Popular</div>
+        <h4>Territory</h4>
+        <div class="tag">5&ndash;10 zip lock &middot; full stack</div>
+        <div class="price">$2,997</div>
+        <div class="mo">Per Month</div>
+      </div>
+
+      <div class="tier-mini">
+        <div class="tier-mini-label">Top tier</div>
+        <h4>County</h4>
+        <div class="tag">Full county lock &middot; team-ready</div>
+        <div class="price">$4,997</div>
+        <div class="mo">Per Month</div>
+      </div>
+
+    </div>
+
+    <div class="tier-foot">
+      <div class="setup-note">
+        New county not yet covered? <strong>$2,500 one-time setup</strong> &middot; credited against first 2 months
+      </div>
+      <a href="tier_comparison_v2.html" class="btn-ghost" target="_blank" rel="noopener">See Full Tier Comparison</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GUARANTEE ============ -->
+<section class="guarantee" id="guarantee">
+  <div class="container">
+    <div class="guarantee-wrap">
+      <div class="guarantee-card">
+        <div class="guarantee-label">The First-Listing Guarantee</div>
+        <h2 class="guarantee-headline">
+          Book a qualified listing appointment in <em>60 days</em> &mdash; or leads keep coming <em>free every week</em> until you do.
+        </h2>
+        <p class="guarantee-body">
+          Work the system &mdash; call every Hot lead within 48 hours, follow the signal-specific scripts &mdash; and if you haven&rsquo;t booked a qualified listing appointment inside 60 days, we don&rsquo;t refund you out. We stay in the system with you. Weekly delivery continues at no charge until you book your first. Same at every tier. No asterisks.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOK / CALENDLY ============ -->
+<section class="book" id="book">
+  <div class="container">
+    <div class="book-inner">
+      <div class="section-label" style="justify-content: center;"><span class="eyebrow">Territory Check Call</span></div>
+      <h2 class="section-title">20 minutes. <em>Zero pressure.</em></h2>
+      <p class="section-intro" style="margin-left: auto; margin-right: auto;">
+        Not a pitch call. A working call &mdash; we check if your zip is still available, walk through one real anonymized lead from last week&rsquo;s batch, and figure out which tier fits your volume.
+      </p>
+
+      <ul class="book-list">
+        <li><strong>We check territory availability.</strong> Live, on the call, in front of you.</li>
+        <li><strong>We walk through a real lead.</strong> From your county, last week&rsquo;s batch, screen-shared.</li>
+        <li><strong>We talk tier fit.</strong> Based on your production volume &mdash; not what we want to sell.</li>
+        <li><strong>If it&rsquo;s a fit &mdash;</strong> we lock your territory and first batch lands in 72 hours.</li>
+        <li><strong>If it&rsquo;s not &mdash;</strong> you leave with the same market intel, at zero cost.</li>
+      </ul>
+
+      <a href="CALENDLY_LINK_HERE" class="btn-primary" target="_blank" rel="noopener">Pick a Time That Works</a>
+
+      <!-- =====================================================
+           CALENDLY / CAL.COM EMBED GOES HERE
+           Replace the entire .calendly-wrap block below with your
+           embed code. Best UX is the inline embed, not the popup.
+
+           CALENDLY INLINE EMBED EXAMPLE:
+           <div class="calendly-inline-widget"
+                data-url="https://calendly.com/YOUR-HANDLE/territory-check"
+                style="min-width:320px;height:700px;"></div>
+           <script type="text/javascript"
+                   src="https://assets.calendly.com/assets/external/widget.js"
+                   async></script>
+
+           CAL.COM EMBED EXAMPLE:
+           <div id="my-cal-inline"></div>
+           <script>
+             (function(C,A,L){ /* Cal.com embed snippet */ })(window,'cal');
+             Cal("inline", { elementOrSelector: "#my-cal-inline",
+                             calLink: "YOUR-HANDLE/territory-check" });
+           </script>
+
+           RECOMMENDED CUSTOM QUESTIONS on your booking form (keeps
+           data parity with your Instagram DM flow):
+           1. Are you an: Agent / Investor / Broker? (required, single select)
+           2. Which NJ county are you working? (required, text)
+           3. Roughly how many deals/year? (required, number)
+           4. Anything else we should know? (optional)
+           ===================================================== -->
+
+      <div class="calendly-wrap">
+        <strong>→ DEVELOPER NOTE:</strong> Replace this block with your Calendly or Cal.com inline embed. Your calendar loads directly here so visitors can book without leaving the page. Recommended custom questions on the booking form: <code>Agent / Investor / Broker</code> (single select), <code>NJ County</code>, <code>Deals per year</code>. See HTML comments above this block for ready-to-paste embed snippets.
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="section-label"><span class="eyebrow">Questions we hear a lot</span></div>
+    <h2 class="section-title">Answered before you <em>ask</em>.</h2>
+
+    <div class="faq-list">
+
+      <details class="faq">
+        <summary>How is this different from Zillow Premier Agent?</summary>
+        <div class="answer">
+          Zillow sends the same lead to 4&ndash;5 agents simultaneously. You compete on response speed, not relationship. Our leads go to one agent per territory &mdash; full stop. Different product entirely.
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>How do you actually get these leads? Is this legal?</summary>
+        <div class="answer">
+          Every signal is public record &mdash; filed with a NJ county court or municipal tax office. Lis Pendens, Sheriff Sales, and Tax Liens are matters of public court record that any attorney, PI, or title company can access. Skip tracing is done through licensed data providers (IDI Core, BatchData) &mdash; the same tools used by private investigators. On your end, standard real estate cold-outreach rules apply.
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>What does &ldquo;qualified listing appointment&rdquo; mean in the guarantee?</summary>
+        <div class="answer">
+          A face-to-face or video meeting scheduled with a property owner from our batch who is actively considering selling. Not a callback. Not a text exchange. An appointment on your calendar. That&rsquo;s the bar.
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>What if my territory is already locked by another agent?</summary>
+        <div class="answer">
+          We check live on the call. If your primary zip is taken, you go on the waitlist at no charge with first right of refusal if that agent cancels. We&rsquo;ll also tell you which adjacent zips are still open so you can consider a territory shift.
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>Why is there a setup fee for new counties?</summary>
+        <div class="answer">
+          Setup only applies if you&rsquo;re the first agent signing up in a county we don&rsquo;t yet cover. Building out a new county is 3&ndash;4 weeks of real work &mdash; court portal integration, VA training, initial verification cycles. The $2,500 is credited against your first two months of service, so you&rsquo;re pre-paying, not paying extra. Agents in counties we already cover see no setup fee.
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>What&rsquo;s the actual time commitment from me?</summary>
+        <div class="answer">
+          Monday morning: review your batch, call Hot leads first (aim for 48-hour response). That&rsquo;s the system. The leads are finished deliverables &mdash; scored, scripted, and skip-traced &mdash; so there&rsquo;s no research work on your side. Most partners spend 30&ndash;60 minutes working a weekly batch.
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>Can I cancel any time?</summary>
+        <div class="answer">
+          Yes. Month to month, no annual contract. Cancel any billing cycle. Your territory releases back to the pool after 30 days. If you come back later, we can&rsquo;t guarantee it&rsquo;ll still be available.
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta">
+  <div class="container">
+    <div class="kicker">The only question worth answering is this.</div>
+    <div class="statement">
+      Would one additional listing in the next 60 days be worth <em>20 minutes</em> of your time on a call?
+    </div>
+    <a href="CALENDLY_LINK_HERE" class="btn-primary" target="_blank" rel="noopener">Book the Territory Check Call</a>
+    <div class="sub">Or DM <a href="https://instagram.com/INSTAGRAM_HANDLE" target="_blank" rel="noopener" style="color: var(--gold-deep); text-decoration: none; border-bottom: 1px dotted var(--gold-deep);">@INSTAGRAM_HANDLE</a> the keyword that fits you &mdash; <strong style="color: var(--gold);">LEADS</strong>, <strong style="color: var(--gold);">DEALS</strong>, or <strong style="color: var(--gold);">TEAM</strong>.</div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">NJ <em>Distress</em> &middot; CJ Dev</div>
+      <div class="footer-counties">Burlington &middot; Camden &middot; Gloucester &middot; Cumberland &middot; Salem</div>
+      <div class="footer-links">
+        <a href="https://instagram.com/INSTAGRAM_HANDLE" target="_blank" rel="noopener">Instagram</a>
+        <a href="#book">Book the Call</a>
+        <a href="tier_comparison_v2.html" target="_blank" rel="noopener">Tiers</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
