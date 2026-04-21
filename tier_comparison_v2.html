@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Founding Partner & Standard Tiers — The Zero-Competition Listing System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0B111F;
+    --bg-raised: #131B2D;
+    --bg-card: #1A2337;
+    --ink: #F3EEDF;
+    --ink-muted: #94A0B8;
+    --ink-faint: #5A6880;
+    --gold: #D4B668;
+    --gold-deep: #B8974A;
+    --gold-soft: #E8D5A0;
+    --rule: #2A3449;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #2a2a2a;
+    font-family: 'IBM Plex Sans', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    min-height: 100vh;
+  }
+
+  .poster {
+    width: 1080px;
+    height: 1350px;
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .poster::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse at 20% 10%, rgba(212, 182, 104, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 90%, rgba(212, 182, 104, 0.04) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .poster::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.07 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    pointer-events: none;
+    z-index: 2;
+    mix-blend-mode: overlay;
+    opacity: 0.6;
+  }
+
+  /* === HEADER === */
+  .header {
+    padding: 36px 64px 22px;
+    position: relative;
+    z-index: 3;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    color: var(--gold);
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .eyebrow::before, .eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-deep), transparent);
+    max-width: 80px;
+  }
+
+  .eyebrow::before {
+    background: linear-gradient(90deg, transparent, var(--gold-deep));
+  }
+
+  .headline {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-align: center;
+    font-variation-settings: 'opsz' 144;
+  }
+
+  .headline em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  .subhead {
+    text-align: center;
+    font-size: 14px;
+    color: var(--ink-muted);
+    margin-top: 12px;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
+  /* === FOUNDING PARTNER BANNER === */
+  .founding-banner {
+    margin: 22px 48px 8px;
+    background: linear-gradient(135deg, #1F2A44 0%, #1A2337 100%);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    padding: 22px 28px;
+    position: relative;
+    z-index: 3;
+    box-shadow:
+      0 0 0 1px rgba(212, 182, 104, 0.15),
+      0 15px 40px -15px rgba(212, 182, 104, 0.3);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .founding-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+  }
+
+  .founding-banner-badge {
+    position: absolute;
+    top: -11px;
+    left: 32px;
+    background: var(--gold);
+    color: var(--bg);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    font-weight: 600;
+    padding: 5px 12px;
+    text-transform: uppercase;
+    border-radius: 1px;
+  }
+
+  .founding-content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .founding-title {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    color: var(--gold-soft);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .founding-tagline {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .founding-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin-top: 4px;
+  }
+
+  .founding-feature {
+    font-size: 13px;
+    color: var(--ink);
+    position: relative;
+    padding-left: 13px;
+  }
+
+  .founding-feature::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 5px;
+    height: 5px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px rgba(212, 182, 104, 0.2);
+  }
+
+  .founding-lifetime {
+    font-size: 12px;
+    color: var(--ink-muted);
+    font-style: italic;
+    margin-top: 8px;
+    letter-spacing: 0.005em;
+  }
+
+  .founding-lifetime strong {
+    color: var(--gold-soft);
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  .founding-price-col {
+    text-align: right;
+    min-width: 160px;
+  }
+
+  .founding-price-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .founding-price {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 52px;
+    color: var(--gold);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .founding-suffix {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* === TRANSITION LABEL === */
+  .transition {
+    text-align: center;
+    padding: 14px 48px 6px;
+    position: relative;
+    z-index: 3;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .transition::before, .transition::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--rule), transparent);
+  }
+
+  /* === TIERS CONTAINER === */
+  .tiers {
+    padding: 8px 48px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    z-index: 3;
+    flex: 1;
+    justify-content: space-between;
+  }
+
+  /* === TIER CARD === */
+  .tier {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 20px 28px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    align-items: center;
+    position: relative;
+  }
+
+  .tier-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .tier-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .tier-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 24px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  .tier-tagline {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+  }
+
+  .tier-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px 14px;
+    margin-top: 2px;
+  }
+
+  .feature {
+    font-size: 12.5px;
+    color: var(--ink-muted);
+    position: relative;
+    padding-left: 12px;
+  }
+
+  .feature::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 4px;
+    height: 4px;
+    background: var(--gold-deep);
+    border-radius: 50%;
+  }
+
+  .tier-price {
+    text-align: right;
+    min-width: 140px;
+  }
+
+  .price-num {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 42px;
+    color: var(--ink);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .price-suffix {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* === TERRITORY — featured anchor === */
+  .tier.featured {
+    background: linear-gradient(180deg, #1F2A44 0%, #1A2337 100%);
+    border: 1px solid var(--gold-deep);
+    padding: 24px 28px;
+    box-shadow:
+      0 0 0 1px rgba(212, 182, 104, 0.12),
+      0 15px 40px -20px rgba(212, 182, 104, 0.2);
+    position: relative;
+  }
+
+  .tier.featured::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: -10px;
+    left: 28px;
+    background: var(--gold);
+    color: var(--bg);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    font-weight: 600;
+    padding: 4px 10px;
+    text-transform: uppercase;
+    border-radius: 1px;
+  }
+
+  .tier.featured .tier-name {
+    color: var(--gold-soft);
+    font-weight: 600;
+  }
+
+  .tier.featured .tier-tagline {
+    color: var(--gold-deep);
+  }
+
+  .tier.featured .price-num {
+    color: var(--gold);
+    font-weight: 500;
+    font-size: 46px;
+  }
+
+  .tier.featured .feature {
+    color: var(--ink);
+  }
+
+  .tier.featured .feature::before {
+    background: var(--gold);
+  }
+
+  /* Anchor math within featured */
+  .anchor-strip {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(212, 182, 104, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .anchor-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+  }
+
+  .anchor-math {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    font-family: 'Fraunces', serif;
+  }
+
+  .anchor-original {
+    font-size: 18px;
+    color: var(--ink-faint);
+    text-decoration: line-through;
+    text-decoration-color: rgba(196, 112, 112, 0.8);
+    text-decoration-thickness: 2px;
+    font-weight: 400;
+  }
+
+  .anchor-arrow {
+    color: var(--ink-faint);
+    font-size: 14px;
+  }
+
+  .anchor-final {
+    font-size: 24px;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* === FOOTER BLOCK === */
+  .footer-block {
+    margin: 8px 48px 16px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 12px;
+    position: relative;
+    z-index: 3;
+  }
+
+  .guarantee-card {
+    background: var(--bg-raised);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--gold);
+    padding: 14px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .guarantee-card .label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .guarantee-card .statement {
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    line-height: 1.3;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    font-weight: 400;
+  }
+
+  .guarantee-card .statement em {
+    color: var(--gold-soft);
+    font-style: italic;
+  }
+
+  .guarantee-card .tier-note {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--ink-faint);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  .scarcity-card {
+    background: var(--bg-raised);
+    border: 1px solid var(--rule);
+    padding: 14px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .scarcity-card .counter {
+    font-family: 'Fraunces', serif;
+    font-size: 34px;
+    color: var(--gold);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .scarcity-card .counter-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    margin-top: 5px;
+  }
+
+  .scarcity-card .counter-detail {
+    font-size: 11px;
+    color: var(--ink-muted);
+    margin-top: 8px;
+    line-height: 1.4;
+  }
+
+  .scarcity-card .counter-detail strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* New county setup note */
+  .setup-note {
+    margin: 0 48px 8px;
+    position: relative;
+    z-index: 3;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    text-align: center;
+    padding: 8px 0;
+    border-top: 1px dashed var(--rule);
+    border-bottom: 1px dashed var(--rule);
+  }
+
+  .setup-note strong {
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* === BRAND FOOTER === */
+  .brand-footer {
+    padding: 12px 64px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--rule);
+    position: relative;
+    z-index: 3;
+  }
+
+  .brand-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  .brand-mark em {
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .brand-cta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .brand-cta::before {
+    content: '→';
+    color: var(--gold);
+    font-size: 13px;
+  }
+
+  .counties {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="poster">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="eyebrow">Founding Partner Program + 3 Standard Tiers</div>
+    <h1 class="headline">
+      Five seats at <em>founding rate</em>.<br>
+      Standard tiers after.
+    </h1>
+    <div class="subhead">The Zero-Competition Listing System · NJ Distressed Property Leads</div>
+  </div>
+
+  <!-- FOUNDING PARTNER BANNER -->
+  <div class="founding-banner">
+    <div class="founding-banner-badge">Open · 5 Seats Only</div>
+    <div class="founding-content">
+      <div class="founding-tagline">Founding Partner Cohort</div>
+      <div class="founding-title">Lifetime Rate for the First Five Agents</div>
+      <div class="founding-features">
+        <div class="founding-feature">10 leads / week</div>
+        <div class="founding-feature">Zip-code exclusivity</div>
+        <div class="founding-feature">Full playbook stack</div>
+        <div class="founding-feature">Same guarantee</div>
+      </div>
+      <div class="founding-lifetime">Trade: your results become the proof. In return: <strong>$1,497 locked forever</strong>, as long as you stay active.</div>
+    </div>
+    <div class="founding-price-col">
+      <div class="founding-price-label">Founding Rate</div>
+      <div class="founding-price">$1,497</div>
+      <div class="founding-suffix">Per Month</div>
+    </div>
+  </div>
+
+  <!-- TRANSITION -->
+  <div class="transition">When the cohort closes — standard pricing below</div>
+
+  <!-- TIERS -->
+  <div class="tiers">
+
+    <!-- ZIP -->
+    <div class="tier">
+      <div class="tier-body">
+        <div class="tier-head">
+          <div class="tier-name">Zip</div>
+          <div class="tier-tagline">Focused farming · 3-zip lock</div>
+        </div>
+        <div class="tier-features">
+          <div class="feature">8 leads / week</div>
+          <div class="feature">3 zips locked</div>
+          <div class="feature">Core stack</div>
+          <div class="feature">Scripts + CMA kit</div>
+          <div class="feature">Territory intel report</div>
+        </div>
+      </div>
+      <div class="tier-price">
+        <div class="price-num">$1,997</div>
+        <div class="price-suffix">Per Month</div>
+      </div>
+    </div>
+
+    <!-- TERRITORY — FEATURED -->
+    <div class="tier featured">
+      <div class="featured-badge">Anchor Tier · Where Most Partners Land</div>
+      <div class="tier-body">
+        <div class="tier-head">
+          <div class="tier-name">Territory</div>
+          <div class="tier-tagline">Multi-zip dominance · Full stack</div>
+        </div>
+        <div class="tier-features">
+          <div class="feature">15 leads / week</div>
+          <div class="feature">5-10 zips locked</div>
+          <div class="feature">Full playbook stack</div>
+          <div class="feature">Quarterly strategy call</div>
+          <div class="feature">Priority signal routing</div>
+          <div class="feature">Conversion dashboard</div>
+        </div>
+        <div class="anchor-strip">
+          <div class="anchor-label">Stack Value</div>
+          <div class="anchor-math">
+            <span class="anchor-original">$9,385</span>
+            <span class="anchor-arrow">→</span>
+            <span class="anchor-final">$2,997</span>
+          </div>
+        </div>
+      </div>
+      <div class="tier-price">
+        <div class="price-num">$2,997</div>
+        <div class="price-suffix">Per Month</div>
+      </div>
+    </div>
+
+    <!-- COUNTY -->
+    <div class="tier">
+      <div class="tier-body">
+        <div class="tier-head">
+          <div class="tier-name">County</div>
+          <div class="tier-tagline">Full county lock · Priority access</div>
+        </div>
+        <div class="tier-features">
+          <div class="feature">25+ leads / week</div>
+          <div class="feature">Entire county locked</div>
+          <div class="feature">Monthly 1-on-1 strategy call</div>
+          <div class="feature">Custom signal filters</div>
+          <div class="feature">First-pull priority</div>
+        </div>
+      </div>
+      <div class="tier-price">
+        <div class="price-num">$4,997</div>
+        <div class="price-suffix">Per Month</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SETUP NOTE -->
+  <div class="setup-note">
+    New county not yet covered? <strong>$2,500 one-time setup</strong> · credited against first 2 months of service
+  </div>
+
+  <!-- FOOTER BLOCK -->
+  <div class="footer-block">
+    <div class="guarantee-card">
+      <div class="label">◆ The First-Listing Guarantee</div>
+      <div class="statement">
+        No qualified listing appointment in <em>60 days</em>? Leads keep coming <em>free every week</em> until one does.
+      </div>
+      <div class="tier-note">Identical at every tier</div>
+    </div>
+    <div class="scarcity-card">
+      <div class="counter">5 / 5</div>
+      <div class="counter-label">Founding seats</div>
+      <div class="counter-detail">After these close, only <strong>standard tiers</strong> are available.</div>
+    </div>
+  </div>
+
+  <!-- BRAND FOOTER -->
+  <div class="brand-footer">
+    <div class="brand-mark">NJ <em>Distress</em> · CJ Dev</div>
+    <div class="counties">Burlington · Camden · Gloucester · Cumberland · Salem</div>
+    <div class="brand-cta">Territory Check Call</div>
+  </div>
+
+</div>
+
+</body>
+</html>
